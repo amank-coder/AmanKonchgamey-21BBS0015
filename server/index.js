@@ -16,16 +16,23 @@ wss.on('connection', (ws) => {
 
     ws.on('message', (message) => {
         const move = JSON.parse(message);
-        const result = processMove(gameState, move);
-
-        if (result.valid) {
-            gameState = result.state;
-            broadcastGameState();
+        
+        if (move.type === 'restart') {
+            gameState = initializeGame(); // Reinitialize the game state
+            broadcastGameState(); // Broadcast the new game state
         } else {
-            ws.send(JSON.stringify({ type: 'invalidMove', message: result.message }));
+            const result = processMove(gameState, move);
+
+            if (result.valid) {
+                gameState = result.state;
+                broadcastGameState();
+            } else {
+                ws.send(JSON.stringify({ type: 'invalidMove', message: result.message }));
+            }
         }
     });
 });
+
 
 function broadcastGameState() {
     wss.clients.forEach(client => {
