@@ -1,0 +1,45 @@
+.board {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr); /* Adjust the number of rows as needed */
+  grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
+  gap: 5px; /* Space between cells */
+  width: 100%; /* Full width of the parent */
+  max-width: 600px; /* Max width for the board */
+  margin: auto; /* Center the board */
+  border: 2px solid #333; /* Border around the board */
+  border-radius: 8px; /* Rounded corners for the board */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for the board */
+}
+
+.row {
+  display: flex; /* Make rows flexible for cells */
+}
+
+.cell {
+  display: flex; /* Center content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  width: 100%; /* Full width of the cell */
+  height: 100%; /* Full height of the cell */
+  background-color: #f0f0f0; /* Light gray background */
+  border: 1px solid #ccc; /* Border around each cell */
+  border-radius: 5px; /* Rounded corners for cells */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  cursor: pointer; /* Cursor pointer for clickable cells */
+}
+
+/* Highlight the selected cell */
+.cell.selected {
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.7); /* Shadow for selected cell */
+}
+
+/* Style for occupied cells */
+.cell.occupied {
+  background-color: #5c08a1; /* Different color for occupied cells */
+}
+
+/* Add hover effect */
+.cell:hover {
+  background-color: #d0d0d0; /* Darker gray on hover */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
