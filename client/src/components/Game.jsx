@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board';
 
-const ws = new WebSocket('ws://localhost:8080');
+const ws = new WebSocket('https://chess-backend-jjyt.onrender.com');
 
 function Game() {
     const [board, setBoard] = useState([]);
